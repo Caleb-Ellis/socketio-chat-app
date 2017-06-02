@@ -1,5 +1,3 @@
-'use strict';
-
 // Make connection
 const socket = io();
 
