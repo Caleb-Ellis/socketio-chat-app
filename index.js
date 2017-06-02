@@ -19,5 +19,10 @@ io.on('connection', (socket) => {
   // Handle chat event
   socket.on('chat', function(data) {
     io.sockets.emit('chat', data);
-  })
+  });
+
+  // Handle typing event
+  socket.on('typing', function(data) {
+    socket.broadcast.emit('typing', data);
+  });
 });
