@@ -8,6 +8,15 @@ const message = document.getElementById('message');
     output = document.getElementById('output');
     feedback = document.getElementById('feedback');
 
+// Preload images
+$.fn.preload = function() {
+    this.each(function(){
+        $('<img/>')[0].src = this;
+    });
+}
+
+$(['./img/user.png']).preload();
+
 // Emit events
 function emitMessage() {
   socket.emit('chat', {
