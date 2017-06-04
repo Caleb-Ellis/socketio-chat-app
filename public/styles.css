@@ -168,6 +168,7 @@ button:hover {
 
 .profilePic {
   height: 50px;
+  width: 50px;
   border-radius: 100%;
   border: 3px solid #86bb71;
   margin: 0 5px;
