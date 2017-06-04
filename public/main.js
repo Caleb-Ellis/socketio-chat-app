@@ -12,7 +12,8 @@ const message = document.getElementById('message');
 btn.addEventListener('click', () => {
   socket.emit('chat', {
     message: message.value,
-    handle: handle.value
+    handle: handle.value,
+    date: Date.now()
   });
   message.value = "";
 });
@@ -23,8 +24,19 @@ message.addEventListener('keypress', () => {
 
 // Listen for events
 socket.on('chat', (data) => {
+  if (data.message === '') {
+    return null;
+  }
+  data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
-  output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
+  chatHistory.innerHTML += '<li><div id="userData"><strong>'
+                            + data.handle
+                            + '</strong><div class="date">'
+                            + data.date
+                            +'</div></div>'
+                            +'<div id="output"><p>'
+                            + data.message
+                            + '</p></li>';
 });
 
 socket.on('typing', (data) => {

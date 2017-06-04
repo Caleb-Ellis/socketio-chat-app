@@ -8,11 +8,16 @@
   </head>
   <body>
 
-    <div id="mario-chat">
-        <h2>Chat App</h2>
-        <div id="chat-window">
+    <div id="chat">
+      <div id="roomName">
+        <h2>Room Name</h2>
+      </div>
+        <div id="chatWindow">
+          <ul id="chatHistory">
+            <div id="userData"></div>
             <div id="output"></div>
-            <div id="feedback"></div>
+          </ul>
+          <div id="feedback"></div>
         </div>
         <input id="handle" type="text" placeholder="Handle" />
         <input id="message" type="text" placeholder="Message" />
@@ -20,5 +25,5 @@
     </div>
 
   </body>
-  <script src="/chat.js"></script>
+  <script src="/main.js"></script>
 </html>
