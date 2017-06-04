@@ -53,10 +53,17 @@ socket.on('chat', (data) => {
   }
   data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
-  var html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
-            +'</strong><div class="date">' + data.date
-            +'</div></div><div id="output"><p>' + data.message
-            +'</p></li>';
+  if (data.handle === handle.value) {
+    var html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
+              +'</strong><div class="date">' + data.date
+              +'</div></div><div id="outputSelf"><p>' + data.message
+              +'</p></div></li>';
+  } else {
+    var html = '<li><div class="userData alignRight"><div class="date">' + data.date
+              + '</div><strong>' + data.handle + '</strong><img class="profilePic" src="./img/user.png">'
+              + '</div><div id="outputOther"><p>' + data.message
+              + '</p></div></li>';
+  }
   $(html).hide().appendTo('#chatHistory').slideDown(300);
   $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });

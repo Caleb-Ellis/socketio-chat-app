@@ -89,10 +89,19 @@ button:hover {
 }
 
 .userData {
-  margin-left: 20px;
+  margin-left: 25px;
 }
 
-#output p {
+.alignRight {
+  text-align: right;
+  margin-right: 25px;
+}
+
+#outputSelf {
+  margin-right: 50px;
+}
+
+#outputSelf p {
   position: relative;
   color: #fff;
   padding: 14px 10px;
@@ -101,7 +110,7 @@ button:hover {
   background: #86bb71;
 }
 
-#output p:after {
+#outputSelf p:after {
   content: '';
   position: absolute;
   border-style: solid;
@@ -112,6 +121,32 @@ button:hover {
   z-index: 1;
   top: -10px;
   left: 26px;
+}
+
+#outputOther {
+  margin-left: 50px;
+}
+
+#outputOther p {
+  position: relative;
+  color: #fff;
+  padding: 14px 10px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  background: #7384c1;
+}
+
+#outputOther p:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 10px 10px;
+  border-color: #7384c1 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -10px;
+  right: 26px;
 }
 
 .date {
@@ -135,7 +170,7 @@ button:hover {
   height: 50px;
   border-radius: 100%;
   border: 3px solid #86bb71;
-  margin-right: 5px;
+  margin: 0 5px;
 }
 
 #message {
