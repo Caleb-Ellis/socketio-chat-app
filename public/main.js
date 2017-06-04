@@ -9,13 +9,15 @@ const message = document.getElementById('message');
     feedback = document.getElementById('feedback');
 
 // Preload images
-$.fn.preload = function() {
-    this.each(function(){
+function preload(arrayOfImages) {
+    $(arrayOfImages).each(function(){
         $('<img/>')[0].src = this;
     });
 }
 
-$(['./img/user.png']).preload();
+// Usage:
+
+preload(['./img/user.png']);
 
 // Emit events
 function emitMessage() {
@@ -51,20 +53,21 @@ socket.on('chat', (data) => {
   if (data.handle === '' || data.message === '') {
     return null;
   }
+  let html;
   data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
   if (data.handle === handle.value) {
-    var html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
-              +'</strong><div class="date">' + data.date
-              +'</div></div><div id="outputSelf"><p>' + data.message
-              +'</p></div></li>';
+    html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
+          +'</strong><div class="date">' + data.date
+          +'</div></div><div id="outputSelf"><p>' + data.message
+          +'</p></div></li>';
   } else {
-    var html = '<li><div class="userData alignRight"><div class="date">' + data.date
-              + '</div><strong>' + data.handle + '</strong><img class="profilePic" src="./img/user.png">'
-              + '</div><div id="outputOther"><p>' + data.message
-              + '</p></div></li>';
+    html = '<li><div class="userData alignRight"><div class="date">' + data.date
+          +'</div><strong>' + data.handle + '</strong><img class="profilePic" src="./img/user.png">'
+          +'</div><div id="outputOther"><p>' + data.message
+          +'</p></div></li>';
   }
-  $(html).hide().appendTo('#chatHistory').slideDown(300);
+  $(html).hide().appendTo('#chatHistory').slideDown(200);
   $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
