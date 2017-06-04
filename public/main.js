@@ -9,34 +9,47 @@ const message = document.getElementById('message');
     feedback = document.getElementById('feedback');
 
 // Emit events
-btn.addEventListener('click', () => {
+function emitMessage() {
   socket.emit('chat', {
     message: message.value,
     handle: handle.value,
     date: Date.now()
   });
   message.value = "";
+};
+
+function emitTyping() {
+  socket.emit('typing', handle.value);
+};
+
+// jQuery events
+$(btn).click(function() {
+  emitMessage();
 });
 
-message.addEventListener('keypress', () => {
-    socket.emit('typing', handle.value);
+$(message).keypress(function(key) {
+  // If enter is pressed, emit message
+  if (key.which === 13) {
+    emitMessage();
+    return false;
+  } else {
+    emitTyping();
+  }
 });
 
-// Listen for events
+// Listen for socket events
 socket.on('chat', (data) => {
-  if (data.message === '') {
+  if (data.handle === '' || data.message === '') {
     return null;
   }
   data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
-  chatHistory.innerHTML += '<li><div id="userData"><strong>'
-                            + data.handle
-                            + '</strong><div class="date">'
-                            + data.date
-                            +'</div></div>'
-                            +'<div id="output"><p>'
-                            + data.message
-                            + '</p></li>';
+  var html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
+            +'</strong><div class="date">' + data.date
+            +'</div></div><div id="output"><p>' + data.message
+            +'</p></li>';
+  $(html).hide().appendTo('#chatHistory').slideDown(300);
+  $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
 socket.on('typing', (data) => {

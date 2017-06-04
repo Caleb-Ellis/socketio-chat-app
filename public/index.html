@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real-time Chat App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.2/socket.io.js"></script>
     <link href="/styles.css" rel="stylesheet" />
@@ -12,18 +13,19 @@
       <div id="roomName">
         <h2>Room Name</h2>
       </div>
-        <div id="chatWindow">
-          <ul id="chatHistory">
-            <div id="userData"></div>
-            <div id="output"></div>
-          </ul>
-          <div id="feedback"></div>
-        </div>
-        <input id="handle" type="text" placeholder="Handle" />
-        <input id="message" type="text" placeholder="Message" />
+      <div id="chatWindow">
+        <ul id="chatHistory">
+        </ul>
+        <div id="feedback"></div>
+      </div>
+      <div id="input">
+        <textarea id="handle" type="text" placeholder="Handle"></textarea>
+        <textarea id="message" type="text" placeholder="Type your message..."></textarea>
         <button id="send">Send</button>
+      </div>
     </div>
 
   </body>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
   <script src="/main.js"></script>
 </html>
