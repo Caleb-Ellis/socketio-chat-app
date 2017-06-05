@@ -14,9 +14,6 @@ function preload(arrayOfImages) {
         $('<img/>')[0].src = this;
     });
 }
-
-// Usage:
-
 preload(['./img/user.png']);
 
 // Emit events
@@ -57,13 +54,13 @@ socket.on('chat', (data) => {
   data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
   if (data.handle === handle.value) {
-    html = '<li><div class="userData"><img class="profilePic" src="./img/user.png"><strong>' + data.handle
+    html = '<li><div class="userData"><img class="profilePic greenBorder" src="./img/user.png"><strong>' + data.handle
           +'</strong><div class="date">' + data.date
           +'</div></div><div id="outputSelf"><p>' + data.message
           +'</p></div></li>';
   } else {
     html = '<li><div class="userData alignRight"><div class="date">' + data.date
-          +'</div><strong>' + data.handle + '</strong><img class="profilePic" src="./img/user.png">'
+          +'</div><strong>' + data.handle + '</strong><img class="profilePic blueBorder" src="./img/user.png">'
           +'</div><div id="outputOther"><p>' + data.message
           +'</p></div></li>';
   }
