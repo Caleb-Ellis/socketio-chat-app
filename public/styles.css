@@ -1,13 +1,21 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 html {
-  height: 96%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
 }
 
 body {
   background: #7384c1;
   font-family: 'Roboto', sans-serif;
-  height: 100%;
+  height: 98%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
 }
 
 ul {
@@ -56,33 +64,103 @@ button {
   padding: 12px 0;
   width: 100%;
   border-radius: 0 0 2px 2px;
+  transition: all .2s;
 }
 
 button:hover {
   cursor: pointer;
+  background: #649950;
+  color: #dfd;
 }
 
 #wrapper {
   display: flex;
-
-}
-
-#chat {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  max-width: 600px;
-  margin: 0 auto;
+  height: 96%;
+  margin: 2% auto;
+  width: 96%;
+  max-width: 800px;
   border: 1px solid #ddd;
   box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
   border-radius: 5px;
   background: #f9f9f9;
 }
 
+#leftPanel {
+  display: flex;
+  flex-direction: column;
+  width: 66.6%;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+#room {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #fff;
+  min-height: 70px;
+  color: #fff;
+}
+
+#roomName {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  background: #86bb71;
+
+}
+
 #roomName h2 {
   font-size: 20px;
-  padding: 10px 20px;
-  color: #575ed8;
+  padding: 0 20px;
+}
+
+#leaveRoom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  background: #e24c38;
+  transition: all .2s;
+}
+
+#leaveRoom h2 {
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+#leaveRoom:hover {
+  color: #fdd;
+  background: #c02a16;
+  cursor: pointer;
+}
+
+#user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #fff;
+  background: #86bb71;
+  min-height: 70px;
+  padding: 0 20px;
+  overflow-wrap: break-word;
+}
+
+#user strong {
+  padding: 0 5px;
+  color: #fff;
+  max-width: 70%;
+}
+
+#rightPanel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 33.4%;
+  background: #5162a0;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  z-index: 0;
 }
 
 #chatWindow {
@@ -91,6 +169,16 @@ button:hover {
   overflow: auto;
   background: #f9f9f9;
   overflow-wrap: break-word;
+  padding: 20px 0;
+}
+
+#usersWindow {
+  flex-grow: 100;
+  height: 500px;
+  overflow: auto;
+  background: #555784;
+  overflow-wrap: break-word;
+  padding: 20px 0;
 }
 
 .userData {
@@ -187,6 +275,10 @@ button:hover {
   border: 3px solid #7384c1;
 }
 
+.whiteBorder {
+  border: 3px solid #f9f9f9;
+}
+
 #message {
   height: 80px;
   overflow-wrap: break-word;
@@ -194,4 +286,13 @@ button:hover {
 
 #handle {
   height: 40px;
+}
+
+@media screen and (max-width: 600px) {
+  #rightPanel {
+    display: none;
+  }
+  #leftPanel {
+    width: 100%;
+  }
 }

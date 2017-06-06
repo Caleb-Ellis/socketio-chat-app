@@ -4,7 +4,7 @@ const socket = io();
 // Query DOM
 const message = document.getElementById('message');
     handle = document.getElementById('handle'),
-    btn = document.getElementById('send'),
+    sendBtn = document.getElementById('send'),
     output = document.getElementById('output');
     feedback = document.getElementById('feedback');
 
@@ -31,7 +31,7 @@ function emitTyping() {
 };
 
 // jQuery events
-$(btn).click(function() {
+$(sendBtn).click(function() {
   emitMessage();
 });
 

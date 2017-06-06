@@ -9,11 +9,17 @@
   </head>
   <body>
 
-
-      <div id="chat">
-        <div id="roomName">
-          <h2>Chatroom</h2>
+    <div id="wrapper">
+      <div id="leftPanel">
+        <div id="room">
+          <div id="roomName">
+            <h2>Chatroom</h2>
+          </div>
+          <div id="leaveRoom">
+            <h2>Leave</h2>
+          </div>
         </div>
+
         <div id="chatWindow">
           <ul id="chatHistory">
           </ul>
@@ -25,7 +31,15 @@
           <button id="send">Send</button>
         </div>
       </div>
+      <div id="rightPanel">
+        <div id="user">
+          <img class="profilePic whiteBorder" src="./img/user.png"><strong>Username</strong>
+        </div>
+        <div id="usersWindow">
 
+        </div>
+      </div>
+    </div>
 
   </body>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
