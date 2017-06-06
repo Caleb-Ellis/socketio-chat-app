@@ -62,6 +62,11 @@ button:hover {
   cursor: pointer;
 }
 
+#wrapper {
+  display: flex;
+
+}
+
 #chat {
   display: flex;
   flex-direction: column;

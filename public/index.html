@@ -9,21 +9,23 @@
   </head>
   <body>
 
-    <div id="chat">
-      <div id="roomName">
-        <h2>Chatroom</h2>
+
+      <div id="chat">
+        <div id="roomName">
+          <h2>Chatroom</h2>
+        </div>
+        <div id="chatWindow">
+          <ul id="chatHistory">
+          </ul>
+          <div id="feedback"></div>
+        </div>
+        <div id="input">
+          <textarea id="handle" type="text" placeholder="Handle"></textarea>
+          <textarea id="message" type="text" placeholder="Type your message..."></textarea>
+          <button id="send">Send</button>
+        </div>
       </div>
-      <div id="chatWindow">
-        <ul id="chatHistory">
-        </ul>
-        <div id="feedback"></div>
-      </div>
-      <div id="input">
-        <textarea id="handle" type="text" placeholder="Handle"></textarea>
-        <textarea id="message" type="text" placeholder="Type your message..."></textarea>
-        <button id="send">Send</button>
-      </div>
-    </div>
+
 
   </body>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
