@@ -1,18 +1,30 @@
 {
-  "name": "websockets",
+  "name": "socketio-chat-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Real-time chat app using Socket.io & Passport",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node server.js"
   },
-  "author": "me",
-  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/Caleb-Ellis/socketio-chat-app",
+    "type": "git"
+  },
+  "author": "Caleb Ellis <calebellis2805@gmail.com> (https://caleb-ellis.github.io/)",
+  "license": "MIT",
   "dependencies": {
-    "bcryptjs": "^2.4.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^1.3.2",
+    "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.10.5",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
     "socket.io": "^2.0.2"
   },
   "devDependencies": {
