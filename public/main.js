@@ -69,7 +69,7 @@ socket.on('chat', (data) => {
           +'</div><div id="outputOther"><p>' + data.message
           +'</p></div></li>';
   }
-  $(html).hide().appendTo('#chatHistory').slideDown({duration:200});
+  $(html).hide().appendTo('#chatHistory').slideDown({duration: 300, easing: 'easeOutQuart'});
   $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
