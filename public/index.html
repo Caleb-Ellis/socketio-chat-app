@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real-time Chat App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.2/socket.io.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/styles.css" rel="stylesheet" />
   </head>
   <body>
@@ -16,7 +17,7 @@
             <h2>Chatroom</h2>
           </div>
           <div id="leaveRoom">
-            <h2>Leave</h2>
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
           </div>
         </div>
         <div id="chatWindow">
@@ -30,9 +31,11 @@
           <button id="send">Send</button>
         </div>
       </div>
-      <div id="rightPanel">
-        <div id="userProfile">
-          <img class="profilePic whiteBorder" src="./img/user.png"><strong>Username</strong>
+      <div id="rightPanel" class="shrink">
+        <div id="topRightPanel">
+          <div id="userProfile">
+            <img class="profilePic whiteBorder" src="./img/me.jpg"><strong>Caleb Ellis</strong>
+          </div>
         </div>
         <div id="usersWindow">
           <ul id="userList">
@@ -46,6 +49,9 @@
               <img class="profilePic whiteBorder" src="./img/user.png"><strong>User3</strong>
             </li>
           </ul>
+          <div id="windowSlider">
+            <i id="slider" class="fa fa-angle-right fa-lg" aria-hidden="true"></i>
+          </div>
         </div>
       </div>
     </div>

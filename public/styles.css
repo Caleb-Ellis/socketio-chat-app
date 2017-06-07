@@ -79,13 +79,12 @@ button:hover {
 #wrapper {
   display: flex;
   height: 96%;
-  margin: 2% auto;
   width: 96%;
+  margin: 1% auto;
   max-width: 800px;
-  border: 1px solid #ddd;
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.05);
   border-radius: 5px;
   background: #f9f9f9;
+  box-shadow: 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12), 0 5px 5px -3px rgba(0,0,0,.2);
 }
 
 #leftPanel {
@@ -95,6 +94,7 @@ button:hover {
   border: 1px solid #fff;
   border-radius: 5px;
   z-index: 1;
+  box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #room {
@@ -113,6 +113,7 @@ button:hover {
   justify-content: flex-start;
   align-items: center;
   background: #86bb71;
+  border-top-left-radius: 5px;
 }
 
 #roomName h2 {
@@ -121,33 +122,30 @@ button:hover {
 }
 
 #leaveRoom {
+  background: #86bb71;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  background: #e24c38;
+  width: 60px;
+  border-top-right-radius: 5px;
+}
+
+#leaveRoom i {
   transition: all .2s;
+  padding: 2px;
 }
 
-#leaveRoom h2 {
-  font-size: 20px;
-  padding: 0 20px;
-}
-
-#leaveRoom:hover {
-  color: #fdd;
-  background: #c02a16;
+#leaveRoom i:hover {
+  color: #ddd;
   cursor: pointer;
 }
 
 #userProfile {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid #fff;
-  background: #86bb71;
   min-height: 70px;
-  padding: 0 20px;
+  padding: 0 10px;
   overflow-wrap: break-word;
 }
 
@@ -161,11 +159,21 @@ button:hover {
   display: flex;
   flex-direction: column;
   flex: 1;
-  width: 33.4%;
-  background: #5162a0;
+  background: #86bb71;
   border: 1px solid #fff;
   border-radius: 5px;
   z-index: 0;
+  transition: all .375s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#topRightPanel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+  min-height: 70px;
+  color: #fff;
+  overflow-wrap: break-word;
 }
 
 #chatWindow {
@@ -178,14 +186,17 @@ button:hover {
 }
 
 #usersWindow {
+  display: flex;
   flex-grow: 100;
   overflow: auto;
-  background: #555784;
+  background: #7384c1;
   overflow-wrap: break-word;
   padding: 10px;
+  border-bottom-right-radius: 5px;
 }
 
 #userList {
+  flex-grow: 1;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -201,6 +212,30 @@ button:hover {
 .user strong {
   max-width: 62%;
   color: #f9f9f9;
+}
+
+#windowSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5%;
+  color: #000;
+  overflow: visible;
+  padding: 0;
+  margin: 0;
+}
+
+#windowSlider i {
+  padding: 5px;
+  transition: all .2s;
+}
+
+#slider {
+  position: relative;
+}
+
+#slider:hover {
+  cursor: pointer;
 }
 
 .userData {
@@ -309,6 +344,24 @@ button:hover {
 #handle {
   height: 40px;
 }
+
+.shrink {
+  transform: translateX(-90%);
+}
+
+.fa-angle-left:hover {
+  transform: translateX(-5px);
+}
+
+.fa-angle-right {
+  padding: 0;
+  margin: 0;
+}
+
+.fa-angle-right:hover {
+  transform: translateX(5px);
+}
+
 
 @media screen and (max-width: 600px) {
   #rightPanel {

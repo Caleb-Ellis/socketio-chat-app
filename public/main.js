@@ -45,6 +45,11 @@ $(message).keypress(function(key) {
   }
 });
 
+$('#slider').click(function() {
+  $('#rightPanel').toggleClass('shrink');
+  $('#slider').toggleClass('fa-angle-left fa-angle-right');
+});
+
 // Listen for socket events
 socket.on('chat', (data) => {
   if (data.handle === '' || data.message === '') {
@@ -64,7 +69,7 @@ socket.on('chat', (data) => {
           +'</div><div id="outputOther"><p>' + data.message
           +'</p></div></li>';
   }
-  $(html).hide().appendTo('#chatHistory').slideDown(200);
+  $(html).hide().appendTo('#chatHistory').slideDown({duration:200});
   $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
