@@ -8,6 +8,29 @@ const message = document.getElementById('message');
     output = document.getElementById('output');
     feedback = document.getElementById('feedback');
 
+let users = [
+  {
+    firstName: 'Caleb',
+    lastName: 'Ellis',
+    profilePic: './img/me.jpg'
+  },
+  {
+    firstName: 'Carolina',
+    lastName: 'Fonseca',
+    profilePic: './img/carol.jpg'
+  },
+  {
+    firstName: 'Sara',
+    lastName: 'Fonseca',
+    profilePic: './img/sara.jpg'
+  },
+  {
+    firstName: 'Nathan',
+    lastName: 'Hawes',
+    profilePic: './img/nathan.jpg'
+  }
+]
+
 // Preload images
 function preload(arrayOfImages) {
     $(arrayOfImages).each(function(){
@@ -65,7 +88,7 @@ socket.on('chat', (data) => {
           +'</p></div></li>';
   } else {
     html = '<li><div class="userData alignRight"><div class="date">' + data.date
-          +'</div><strong>' + data.handle + '</strong><img class="profilePic blueBorder" src="./img/me2.jpg">'
+          +'</div><strong>' + data.handle + '</strong><img class="profilePic blueBorder" src="./img/carol.jpg">'
           +'</div><div id="outputOther"><p>' + data.message
           +'</p></div></li>';
   }
@@ -75,4 +98,23 @@ socket.on('chat', (data) => {
 
 socket.on('typing', (data) => {
     feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+});
+
+function loadUsers() {
+  users.sort(function(a, b){
+    let nameA=a.firstName.toLowerCase(), nameB=b.firstName.toLowerCase();
+    if (nameA < nameB)
+      return -1;
+    if (nameA > nameB)
+      return 1;
+    return 0;
+  });
+  let html = '';
+  for (let i=0; i<users.length; i++) {
+    html += '<li class="user"><img class="profilePic whiteBorder" src='+users[i].profilePic+'><strong>'+users[i].firstName+' '+users[i].lastName+'</strong></li>'
+  }
+  $(html).appendTo('#userList');
+}
+$(document).ready(function() {
+  loadUsers();
 });

@@ -10,6 +10,8 @@
   "author": "me",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "socket.io": "^2.0.2"
   },
