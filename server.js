@@ -14,12 +14,24 @@ const socket = require('socket.io');
 //const passport = require('./app/auth');
 //const ioServer = require('./app/socket')(app);
 
-// App setup
+// Set port number
 const PORT = process.env.PORT || 3000;
-const server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-// Static files
+// Set view engine
+app.set('views', path.join(__dirname, 'app/views'));
+app.set('view engine', 'ejs');
+
+// Set middleware
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
+//app.use(session);
+//app.use(passport.initialize());
+//app.use(passport.session());
+//app.use(flash());
+//app.use('/', routes);
+
+const server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 // Socket setup and pass server
 const io = socket(server);
