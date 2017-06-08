@@ -73,6 +73,14 @@ $('#slider').click(function() {
   $('#slider').toggleClass('fa-angle-left fa-angle-right');
 });
 
+$('#login').click(function() {
+  window.location.href = 'room';
+});
+
+$('#leaveBtn').click(function() {
+  window.location.href = '/';
+});
+
 // Listen for socket events
 socket.on('chat', (data) => {
   if (data.handle === '' || data.message === '') {

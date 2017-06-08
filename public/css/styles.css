@@ -76,6 +76,44 @@ button:hover {
   color: #dfd;
 }
 
+#loginWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  width: 96%;
+  margin: 5% auto;
+  max-width: 400px;
+  max-height: 500px;
+  background: #f9f9f9;
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 70px;
+  color: #fff;
+  background: #86bb71;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 #wrapper {
   display: flex;
   height: 96%;
