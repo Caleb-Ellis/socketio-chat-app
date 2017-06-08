@@ -1,14 +1,14 @@
 // Make connection
-const socket = io();
+var socket = io();
 
 // Query DOM
-const message = document.getElementById('message');
+var message = document.getElementById('message');
     handle = document.getElementById('handle'),
     sendBtn = document.getElementById('send'),
     output = document.getElementById('output');
     feedback = document.getElementById('feedback');
 
-let users = [
+var users = [
   {
     firstName: 'Caleb',
     lastName: 'Ellis',
@@ -33,7 +33,7 @@ let users = [
 
 // Preload images
 function preload(arrayOfImages) {
-    $(arrayOfImages).each(function(){
+    $(arrayOfImages).each(function() {
         $('<img/>')[0].src = this;
     });
 }
@@ -73,20 +73,16 @@ $('#slider').click(function() {
   $('#slider').toggleClass('fa-angle-left fa-angle-right');
 });
 
-$('#login').click(function() {
-  window.location.href = 'room';
-});
-
 $('#leaveBtn').click(function() {
   window.location.href = '/';
 });
 
 // Listen for socket events
-socket.on('chat', (data) => {
+socket.on('chat', function(data) {
   if (data.handle === '' || data.message === '') {
     return null;
   }
-  let html;
+  var html;
   data.date = new Date(data.date).toLocaleString();
   feedback.innerHTML = '';
   if (data.handle === handle.value) {
@@ -104,21 +100,34 @@ socket.on('chat', (data) => {
   $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
-socket.on('typing', (data) => {
-    feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+socket.on('typing', function(data) {
+  feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+  $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
+});
+
+socket.on('connected', function(data) {
+  var html = '<p><em>' + data + ' has joined the room</em></p>';
+  $(html).appendTo('#chatHistory');
+  $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
+});
+
+socket.on('disconnected', function(data) {
+  var html = '<p><em>' + data + ' has left the room</em></p>';
+  $(html).appendTo('#chatHistory');
+  $("#chatWindow").animate({ scrollTop: $('#chatWindow')[0].scrollHeight}, 1000);
 });
 
 function loadUsers() {
   users.sort(function(a, b){
-    let nameA=a.firstName.toLowerCase(), nameB=b.firstName.toLowerCase();
+    var nameA=a.firstName.toLowerCase(), nameB=b.firstName.toLowerCase();
     if (nameA < nameB)
       return -1;
     if (nameA > nameB)
       return 1;
     return 0;
   });
-  let html = '';
-  for (let i=0; i<users.length; i++) {
+  var html = '';
+  for (var i=0; i<users.length; i++) {
     html += '<li class="user"><img class="profilePic whiteBorder" src='+users[i].profilePic+'><strong>'+users[i].firstName+' '+users[i].lastName+'</strong></li>'
   }
   $(html).appendTo('#userList');

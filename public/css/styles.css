@@ -222,6 +222,12 @@ button:hover {
   padding: 20px 0;
 }
 
+#chatWindow p {
+  color: #aaa;
+  padding: 14px 0px;
+  margin: 0 20px;
+}
+
 #usersWindow {
   display: flex;
   flex-grow: 100;
