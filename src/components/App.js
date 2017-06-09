@@ -1,4 +1,3 @@
-
 // Import dependencies
 import React from 'react';
 import ChatRoom from './ChatRoom';
@@ -35,9 +34,9 @@ render() {
 
   // Initial page load - show a simple login form
   return (
-    <form onSubmit={this.usernameSubmitHandler} className="username-container">
-      <div id="loginWrapper">
-        <div id="title">
+    <form onSubmit={this.usernameSubmitHandler} className="centered">
+      <div className="mainWrapper">
+        <div className="title">
           <h2>React + Socket Instant Chat</h2>
         </div>
         <div>

@@ -10,7 +10,6 @@ html, body {
   padding: 0;
   border: 0;
   outline: 0;
-  overflow-y: hidden;
 }
 
 body {
@@ -51,21 +50,20 @@ input[type="submit"]:hover {
   color: #dfd;
 }
 
-#loginWrapper {
+.mainWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 90%;
-  width: 96%;
+  max-height: 90vh;
+  width: 90vw;
+  max-width: 600px;
   margin: 5% auto;
-  max-width: 400px;
-  max-height: 500px;
   background: #f9f9f9;
   border: 1px solid #fff;
   border-radius: 5px;
 }
 
-#title {
+.title {
   display: flex;
   justify-content: center;
   align-items: center;

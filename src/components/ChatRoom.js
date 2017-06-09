@@ -44,8 +44,8 @@ class ChatRoom extends React.Component {
 
   render() {
     return (
-      <div className="container">
-        <h3>React Chat App</h3>
+      <div className="mainWrapper">
+        <h3 className="title">React Chat App</h3>
         <ChatHistory messages={this.state.messages} />
         <ChatInput onSend={this.sendHandler} />
       </div>
