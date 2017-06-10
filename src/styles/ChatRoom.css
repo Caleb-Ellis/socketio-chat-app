@@ -1,61 +1,142 @@
 .messages {
-  overflow-x: hidden;
   flex-grow: 1;
   padding: 20px;
-}
-
-h3 {
-  text-align: center;
-  padding: 20px 0;
-  margin: 0;
-  border-bottom: 1px solid #ddd;
-  background-color: #eee;
+  height: 90vh;
+  max-height: 90vh;
+  overflow-y: scroll;
 }
 
 .chat-input {
   position: relative;
   overflow: hidden;
-  padding: 0 40px;
+  width: 100%;
   flex-shrink: 0;
 }
 
 .chat-input input[type="text"] {
   width: 100%;
-  margin-left: -20px;
-  margin-right: -20px;
-}
-
-.message.from-me .username {
-  display: none;
-}
-
-.message.from-me {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 5px;
-}
-
-.message.from-me .message-body {
-  background-color: #af9570;
-  color: white;
+  padding: 20px;
+  overflow-x: scroll;
 }
 
 .message {
   margin-bottom: 20px;
 }
+
 .message-body {
-  max-width: 80%;
+  max-width: 100%;
   display: inline-block;
-  padding: 20px;
-  background-color: #eee;
-  border: 1px;
   border-radius: 5px;
-  padding-right: 50px;
+  position: relative;
+  color: #fff;
+  padding: 14px 10px;
+  margin: 10px;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+}
+
+.message.from-me {
+  display: flex;
+  flex-direction: column;
+  margin-right: 5%;
+  margin-bottom: 5px;
+}
+
+.message.from-me .message-body {
+  background: #86bb71;
+}
+
+.message.from-me .message-body:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 10px 10px;
+  border-color: #86bb71 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -10px;
+  left: 34px;
+}
+
+.message.from-other {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+  margin-bottom: 5px;
+}
+
+.message.from-other .message-body {
+  background: #7384c1;
+}
+
+.message.from-other .message-body:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 10px 10px;
+  border-color: #7384c1 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -10px;
+  right: 34px;
+}
+
+.message.from-me .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.message.from-other .user-info {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin: 0 10px;
+}
+
+.message.from-me .profile-pic {
+  border: 3px solid #86bb71;
+}
+
+.message.from-other .profile-pic {
+  border: 3px solid #7384c1;
 }
 
 .username {
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #999;
-  margin-bottom: 5px;
+  margin: 0 10px;
+}
+
+.date {
+  font-size: 0.6rem;
+  color: #999;
+  margin-top: 3px;
+}
+
+
+.slide-enter {
+  opacity: 0.01;
+}
+
+.slide-enter.slide-enter-active {
+  opacity: 1;
+  transition: all 200ms ease-in;
+}
+
+.slide-leave {
+  opacity: 1;
+}
+
+.slide-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
 }

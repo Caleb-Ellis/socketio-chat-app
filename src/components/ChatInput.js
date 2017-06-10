@@ -34,6 +34,7 @@ class ChatInput extends React.Component {
           value={this.state.chatInput}
           placeholder="Write a message..."
           required />
+        <input type="submit" value="Send" />
       </form>
     );
   }

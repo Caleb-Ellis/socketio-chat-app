@@ -23,6 +23,7 @@ class App extends React.Component {
     // Prevent page refresh
     event.preventDefault();
     this.setState({ submitted: true, username: this.state.username });
+
 }
 render() {
   // If username is submitted - show main chat page

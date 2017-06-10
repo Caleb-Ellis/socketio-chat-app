@@ -1,5 +1,6 @@
 // Import dependencies
 import React from 'react';
+import { CSSTransitionGroup } from 'react-transition-group'
 
 import Message from './Message';
 
@@ -24,7 +25,12 @@ class Messages extends React.Component {
 
     return (
       <div className='messages' id='messageList'>
-        { messages }
+        <CSSTransitionGroup
+          transitionName="slide"
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}>
+            { messages }
+        </CSSTransitionGroup>
       </div>
     );
   }
