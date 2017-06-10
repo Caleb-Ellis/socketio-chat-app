@@ -126,7 +126,7 @@
 .slide-enter {
   opacity: 0.01;
   position: relative;
-  top: -30px;
+  top: -20px;
 }
 
 .slide-enter.slide-enter-active {

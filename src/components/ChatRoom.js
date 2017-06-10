@@ -7,19 +7,22 @@ import ChatHistory from './ChatHistory';
 import ChatInput from './ChatInput';
 
 class ChatRoom extends React.Component {
-  socket = {};
   constructor(props) {
     super(props);
     this.state = { messages: [] };
     this.sendHandler = this.sendHandler.bind(this);
 
-    // Connect to the server
-    //this.socket = io();
+    this.socket = io('http://localhost:8080', { query: `username=${props.username}` }).connect();
 
     // Listen for messages from the server
-    //this.socket.on('server:message', message => {
-    //  this.addMessage(message);
-    //});
+    this.socket.on('server:message', message => {
+      this.addMessage(message);
+    });
+  }
+
+  componentDidMount() {
+    // Auto-focus on input text
+    document.getElementById("input-text").focus();
   }
 
   sendHandler(message) {
@@ -29,7 +32,7 @@ class ChatRoom extends React.Component {
     };
 
     // Emit the message to the server
-    //this.socket.emit('client:message', messageObject);
+    this.socket.emit('client:message', messageObject);
 
     messageObject.fromMe = true;
     this.addMessage(messageObject);

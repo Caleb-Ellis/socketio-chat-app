@@ -15,6 +15,11 @@ class App extends React.Component {
     this.usernameSubmitHandler = this.usernameSubmitHandler.bind(this);
   }
 
+  componentDidMount() {
+    // Auto-focus on input text
+    document.getElementById("input-text").focus();
+  }
+
   usernameChangeHandler(event) {
     this.setState({ username: event.target.value });
   }
@@ -41,7 +46,7 @@ render() {
           <h2>React + Socket Instant Chat</h2>
         </div>
         <div>
-          <input
+          <input id="input-text"
             type="text"
             onChange={this.usernameChangeHandler}
             placeholder="Enter a username..."

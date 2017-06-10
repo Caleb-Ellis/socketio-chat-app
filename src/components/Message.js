@@ -11,7 +11,7 @@ class Message extends React.Component {
         <div className={`message ${fromMe}`}>
           <div className='user-info'>
             <div>
-              <img className='profile-pic' src={require('../img/user.png')} alt=''/>
+              <img className='profile-pic' src='http://via.placeholder.com/50x50' alt=''/>
             </div>
             <div className='username'>
               { this.props.username }
