@@ -12,12 +12,17 @@ class ChatRoom extends React.Component {
     this.state = { messages: [] };
     this.sendHandler = this.sendHandler.bind(this);
 
+    // Connect socket
     this.socket = io('http://localhost:8080', { query: `username=${props.username}` }).connect();
 
     // Listen for messages from the server
     this.socket.on('server:message', message => {
       this.addMessage(message);
     });
+
+    this.socket.on('join', (username) => {
+      console.log(username);
+    })
   }
 
   componentDidMount() {
