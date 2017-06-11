@@ -27,23 +27,28 @@ server.listen(PORT, function(error) {
   if (error) {
     console.error(error);
   } else {
-    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
+    console.log('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
   }
 });
 
 // Setup socket.io
 io.on('connection', socket => {
-  const username = socket.handshake.query.username;
-  console.log(`${username} connected`);
 
+  // Log chat messages
   socket.on('client:message', data => {
     console.log(`${data.username}: ${data.message}`);
 
-    // message received from client, now broadcast it to everyone else
+    // When message received by server, send to everyone else on socket
     socket.broadcast.emit('server:message', data);
   });
 
-  socket.on('disconnect', () => {
-    console.log(`${username} disconnected`);
+  // Log when user enters room
+  socket.on('join', data => {
+    console.log(`${data} has entered the room`)
+  });
+
+  // Log when user exits room
+  socket.on('leave', data => {
+    console.log(`${data} has left the room`)
   });
 });

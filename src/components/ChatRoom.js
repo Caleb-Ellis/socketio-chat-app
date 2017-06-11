@@ -6,28 +6,25 @@ import '../styles/ChatRoom.css';
 import ChatHistory from './ChatHistory';
 import ChatInput from './ChatInput';
 
+let socket = io.connect();
+
 class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [] };
-    this.sendHandler = this.sendHandler.bind(this);
 
-    // Connect socket
-    this.socket = io('http://localhost:8080', { query: `username=${props.username}` }).connect();
+    // Bind 'this' to event handlers - React ES6 does not do this by default
+    this.sendHandler = this.sendHandler.bind(this);
+    this.leaveEmit = this.leaveEmit.bind(this);
 
     // Listen for messages from the server
-    this.socket.on('server:message', message => {
+    socket.on('server:message', message => {
       this.addMessage(message);
     });
-
-    this.socket.on('join', (username) => {
-      console.log(username);
-    })
   }
 
-  componentDidMount() {
-    // Auto-focus on input text
-    document.getElementById("input-text").focus();
+  leaveEmit() {
+    socket.emit('leave', this.props.username);
   }
 
   sendHandler(message) {
@@ -37,7 +34,7 @@ class ChatRoom extends React.Component {
     };
 
     // Emit the message to the server
-    this.socket.emit('client:message', messageObject);
+    socket.emit('client:message', messageObject);
 
     messageObject.fromMe = true;
     this.addMessage(messageObject);
@@ -48,6 +45,26 @@ class ChatRoom extends React.Component {
     const messages = this.state.messages;
     messages.push(message);
     this.setState({ messages });
+  }
+
+  componentDidMount() {
+    // Auto-focus on input text
+    document.getElementById("input-text").focus();
+
+    // Emit join message
+    socket.emit('join', this.props.username);
+
+    // Allow unmount on page close/refresh
+    window.addEventListener('beforeunload', () => {
+      this.leaveEmit()
+    });
+  }
+
+  componentWillUnmount() {
+    // Allow unmount on page close/refresh
+    window.removeEventListener('beforeunload', () => {
+      this.leaveEmit()
+    });
   }
 
   render() {
