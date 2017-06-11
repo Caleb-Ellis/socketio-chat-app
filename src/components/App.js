@@ -11,13 +11,16 @@ class App extends React.Component {
     this.state = { username: '' };
 
     // Bind 'this' to event handlers - React ES6 does not do this by default
+    this.leaveHandler = this.leaveHandler.bind(this);
     this.usernameChangeHandler = this.usernameChangeHandler.bind(this);
     this.usernameSubmitHandler = this.usernameSubmitHandler.bind(this);
   }
 
-  componentDidMount() {
-    // Auto-focus on input text
-    document.getElementById("input-text").focus();
+  leaveHandler(e) {
+    this.setState({
+      submitted: false,
+      username: ''
+    });
   }
 
   usernameChangeHandler(event) {
@@ -29,34 +32,42 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({ submitted: true, username: this.state.username });
 
-}
-render() {
-  // If username is submitted - show main chat page
-  if (this.state.submitted) {
-    return (
-      <ChatRoom username={this.state.username} />
-    );
   }
 
-  // Initial page load - show a simple login form
-  return (
-    <form onSubmit={this.usernameSubmitHandler} className="centered">
-      <div className="mainWrapper">
-        <div className="title">
-          <h2>React + Socket Instant Chat</h2>
+  componentDidMount() {
+    // Auto-focus on input text
+    document.getElementById("input-text").focus();
+  }
+
+  render() {
+    // If username is submitted - show main chat page
+    if (this.state.submitted) {
+      return (
+        <ChatRoom
+          leaveHandler={this.leaveHandler}
+          username={this.state.username} />
+      );
+    }
+
+    // Initial page load - show a simple login form
+    return (
+      <form onSubmit={this.usernameSubmitHandler} className="centered">
+        <div className="mainWrapper">
+          <div className="title">
+            <h2>React + Socket Instant Chat</h2>
+          </div>
+          <div>
+            <input id="input-text"
+              type="text"
+              onChange={this.usernameChangeHandler}
+              placeholder="Enter a username..."
+              required />
+          </div>
+          <input type="submit" value="Submit" />
         </div>
-        <div>
-          <input id="input-text"
-            type="text"
-            onChange={this.usernameChangeHandler}
-            placeholder="Enter a username..."
-            required />
-        </div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  );
-}
+      </form>
+    );
+  }
 
 }
 App.defaultProps = {

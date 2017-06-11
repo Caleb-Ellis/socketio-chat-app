@@ -17,7 +17,7 @@ class Message extends React.Component {
               { this.props.username }
             </div>
             <div className='date'>
-              { new Date(Date.now()).toLocaleString() }
+              { this.props.date }
             </div>
           </div>
           <div className='message-body'>

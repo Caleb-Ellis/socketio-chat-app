@@ -21,6 +21,21 @@ class ChatRoom extends React.Component {
     socket.on('server:message', message => {
       this.addMessage(message);
     });
+
+    // Listen for users typing
+    socket.on('server:typing', data => {
+      document.getElementById('feedback').innerHTML='<p><em>'+data+' is typing...</em></p>';
+    });
+
+    // Listen for users joining
+    socket.on('server:join', data => {
+      document.getElementById('feedback').innerHTML='<p><em>'+data+' has entered the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
+    });
+
+    // Listen for users leaving
+    socket.on('server:leave', data => {
+      document.getElementById('feedback').innerHTML='<p><em>'+data+' has left the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
+    });
   }
 
   leaveEmit() {
@@ -28,9 +43,11 @@ class ChatRoom extends React.Component {
   }
 
   sendHandler(message) {
+    let date = new Date(Date.now()).toLocaleString();
     const messageObject = {
       username: this.props.username,
-      message
+      message,
+      date: date
     };
 
     // Emit the message to the server
@@ -47,6 +64,10 @@ class ChatRoom extends React.Component {
     this.setState({ messages });
   }
 
+  leaveRoom() {
+    this.state.submitted = false;
+  }
+
   componentDidMount() {
     // Auto-focus on input text
     document.getElementById("input-text").focus();
@@ -61,6 +82,7 @@ class ChatRoom extends React.Component {
   }
 
   componentWillUnmount() {
+    this.leaveEmit();
     // Allow unmount on page close/refresh
     window.removeEventListener('beforeunload', () => {
       this.leaveEmit()
@@ -72,9 +94,10 @@ class ChatRoom extends React.Component {
       <div className="mainWrapper">
         <div className="title">
           <h2>Chatroom</h2>
-          <i id="leaveBtn" className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+          <i onClick={this.props.leaveHandler} id="leaveBtn" className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
         </div>
         <ChatHistory messages={this.state.messages} />
+        <div id="feedback"></div>
         <ChatInput onSend={this.sendHandler} />
       </div>
     );
