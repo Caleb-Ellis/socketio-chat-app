@@ -54,7 +54,7 @@
   border-color: #86bb71 transparent;
   display: block;
   width: 0;
-  z-index: 2;
+  z-index: 1;
   top: -10px;
   left: 34px;
 }
@@ -78,7 +78,7 @@
   border-color: #7384c1 transparent;
   display: block;
   width: 0;
-  z-index: 2;
+  z-index: 1;
   top: -10px;
   right: 34px;
 }
@@ -154,9 +154,16 @@
   background: #86bb71;
   border: 1px solid #fff;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 0;
   transition: all .375s cubic-bezier(0.4, 0.0, 0.2, 1);
-  transform: translateX(0);
+}
+
+.hide {
+  transform: translateX(-90%);
+}
+
+.show {
+  transform: translate(0);
 }
 
 #topRightPanel {

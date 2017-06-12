@@ -1,6 +1,7 @@
 
 // Import dependencies
 import React from 'react';
+import $ from 'jquery';
 import '../styles/ChatRoom.css';
 
 import ChatHistory from './ChatHistory';
@@ -63,7 +64,9 @@ class ChatRoom extends React.Component {
   }
 
   slideHandler() {
-
+    $('#userListPanel').toggleClass('show hide');
+    $('#slider').toggleClass('fa-angle-left fa-angle-right');
+    $('.chatWrapper').toggleClass('center left');
   }
 
   addMessage(message) {
@@ -96,7 +99,7 @@ class ChatRoom extends React.Component {
 
   render() {
     return (
-      <div className="chatWrapper">
+      <div className="chatWrapper left">
         <div className="mainWrapper">
           <div className="title">
             <h2 id="roomTitle">Chatroom</h2>
@@ -106,7 +109,7 @@ class ChatRoom extends React.Component {
         <div id="feedback"></div>
         <ChatInput onSend={this.sendHandler} />
         </div>
-        <div id="userListPanel">
+        <div id="userListPanel" className="show">
           <div id="topRightPanel">
             <div id="userProfile">
               <img className="profile-pic whiteBorder" src='http://via.placeholder.com/50x50' alt=""/><strong>{this.props.username}</strong>

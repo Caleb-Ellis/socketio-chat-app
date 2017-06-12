@@ -58,11 +58,21 @@ input[type="submit"]:hover {
 }
 
 .chatWrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   max-height: 90vh;
   margin: 4vh auto;
   font-family: 'Roboto', sans-serif;
+  transition: all .375s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.left {
+  left: 0;
+}
+
+.center {
+  left: 120px;
 }
 
 .mainWrapper {
@@ -74,7 +84,7 @@ input[type="submit"]:hover {
   background: #f9f9f9;
   border: 1px solid #fff;
   border-radius: 5px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .title {
@@ -86,6 +96,7 @@ input[type="submit"]:hover {
   min-height: 70px;
   color: #fff;
   background: #86bb71;
+  border-radius: 5px 5px 0 0;
 }
 
 @media screen and (max-width: 700px) {
@@ -99,6 +110,7 @@ input[type="submit"]:hover {
   .chatWrapper {
     max-height: 100vh;
     margin: 0 auto;
+    left: 0;
   }
   input[type="submit"] {
     display: none;
