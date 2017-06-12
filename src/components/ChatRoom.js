@@ -11,12 +11,17 @@ let socket = io.connect();
 class ChatRoom extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] };
+    this.state = {
+      messages: [],
+    };
 
     // Bind 'this' to event handlers - React ES6 does not do this by default
     this.sendHandler = this.sendHandler.bind(this);
+    this.slideHandler = this.slideHandler.bind(this);
     this.leaveEmit = this.leaveEmit.bind(this);
 
+
+    // SOCKET FUNCTIONS
     // Listen for messages from the server
     socket.on('server:message', message => {
       this.addMessage(message);
@@ -57,15 +62,15 @@ class ChatRoom extends React.Component {
     this.addMessage(messageObject);
   }
 
+  slideHandler() {
+
+  }
+
   addMessage(message) {
     // Append the message to the component state
     const messages = this.state.messages;
     messages.push(message);
     this.setState({ messages });
-  }
-
-  leaveRoom() {
-    this.state.submitted = false;
   }
 
   componentDidMount() {
@@ -91,14 +96,29 @@ class ChatRoom extends React.Component {
 
   render() {
     return (
-      <div className="mainWrapper">
-        <div className="title">
-          <h2>Chatroom</h2>
+      <div className="chatWrapper">
+        <div className="mainWrapper">
+          <div className="title">
+            <h2 id="roomTitle">Chatroom</h2>
           <i onClick={this.props.leaveHandler} id="leaveBtn" className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
         </div>
         <ChatHistory messages={this.state.messages} />
         <div id="feedback"></div>
         <ChatInput onSend={this.sendHandler} />
+        </div>
+        <div id="userListPanel">
+          <div id="topRightPanel">
+            <div id="userProfile">
+              <img className="profile-pic whiteBorder" src='http://via.placeholder.com/50x50' alt=""/><strong>{this.props.username}</strong>
+            </div>
+          </div>
+          <div id="usersWindow">
+            <ul id="userList"></ul>
+            <div id="windowSlider">
+              <i onClick={this.slideHandler} id="slider" className="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

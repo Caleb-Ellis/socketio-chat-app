@@ -52,18 +52,20 @@ class App extends React.Component {
     // Initial page load - show a simple login form
     return (
       <form onSubmit={this.usernameSubmitHandler} className="centered">
-        <div className="mainWrapper">
-          <div className="title">
-            <h2>React + Socket Instant Chat</h2>
+        <div className="loginWrapper">
+          <div className="mainWrapper">
+            <div className="title">
+              <h2>React + Socket Instant Chat</h2>
+            </div>
+            <div>
+              <input id="input-text"
+                type="text"
+                onChange={this.usernameChangeHandler}
+                placeholder="Enter a username..."
+                required />
+            </div>
+            <input type="submit" value="Submit" />
           </div>
-          <div>
-            <input id="input-text"
-              type="text"
-              onChange={this.usernameChangeHandler}
-              placeholder="Enter a username..."
-              required />
-          </div>
-          <input type="submit" value="Submit" />
         </div>
       </form>
     );
