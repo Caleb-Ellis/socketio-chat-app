@@ -1,11 +1,11 @@
 
 // Import dependencies
 import React from 'react';
-import $ from 'jquery';
 import '../styles/ChatRoom.css';
 
 import ChatHistory from './ChatHistory';
 import ChatInput from './ChatInput';
+import UserList from './UserList';
 
 let socket = io.connect();
 
@@ -18,7 +18,6 @@ class ChatRoom extends React.Component {
 
     // Bind 'this' to event handlers - React ES6 does not do this by default
     this.sendHandler = this.sendHandler.bind(this);
-    this.slideHandler = this.slideHandler.bind(this);
     this.leaveEmit = this.leaveEmit.bind(this);
 
 
@@ -63,12 +62,6 @@ class ChatRoom extends React.Component {
     this.addMessage(messageObject);
   }
 
-  slideHandler() {
-    $('#userListPanel').toggleClass('show hide');
-    $('#slider').toggleClass('fa-angle-left fa-angle-right');
-    $('.chatWrapper').toggleClass('center left');
-  }
-
   addMessage(message) {
     // Append the message to the component state
     const messages = this.state.messages;
@@ -109,19 +102,7 @@ class ChatRoom extends React.Component {
         <div id="feedback"></div>
         <ChatInput onSend={this.sendHandler} />
         </div>
-        <div id="userListPanel" className="show">
-          <div id="topRightPanel">
-            <div id="userProfile">
-              <img className="profile-pic whiteBorder" src='http://via.placeholder.com/50x50' alt=""/><strong>{this.props.username}</strong>
-            </div>
-          </div>
-          <div id="usersWindow">
-            <ul id="userList"></ul>
-            <div id="windowSlider">
-              <i onClick={this.slideHandler} id="slider" className="fa fa-angle-left fa-lg" aria-hidden="true"></i>
-            </div>
-          </div>
-        </div>
+        <UserList username={this.props.username} />
       </div>
     );
   }

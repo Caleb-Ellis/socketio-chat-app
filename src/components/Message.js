@@ -11,7 +11,7 @@ class Message extends React.Component {
         <div className={`message ${fromMe}`}>
           <div className='user-info'>
             <div>
-              <img className='profile-pic' src='http://via.placeholder.com/50x50' alt=''/>
+              <img className='profile-pic' src='https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png' alt=''/>
             </div>
             <div className='username'>
               { this.props.username }

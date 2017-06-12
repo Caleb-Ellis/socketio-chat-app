@@ -97,6 +97,8 @@
 .profile-pic {
   height: 50px;
   width: 50px;
+  min-height: 50px;
+  min-width: 50px;
   border-radius: 100%;
   margin: 0 10px;
 }
@@ -155,6 +157,7 @@
   border: 1px solid #fff;
   border-radius: 5px;
   z-index: 0;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
   transition: all .375s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
@@ -199,7 +202,7 @@
   display: flex;
   flex-grow: 100;
   overflow: auto;
-  background: #7384c1;
+  background: #f9f9f9;
   overflow-wrap: break-word;
   padding: 10px;
   border-bottom-right-radius: 5px;
@@ -217,7 +220,7 @@
   justify-content: center;
   align-items: center;
   width: 20px;
-  color: #fff;
+  color: #7384c1;
   overflow: visible;
   padding: 0;
   margin: 0;

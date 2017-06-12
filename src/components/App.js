@@ -60,6 +60,7 @@ class App extends React.Component {
             <div>
               <input id="input-text"
                 type="text"
+                maxLength="30"
                 onChange={this.usernameChangeHandler}
                 placeholder="Enter a username..."
                 required />
