@@ -11,7 +11,7 @@ class Message extends React.Component {
         <div className={`message ${fromMe}`}>
           <div className='user-info'>
             <div>
-              <img className='profile-pic' src='https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png' alt=''/>
+              <img className='profile-pic' src={this.props.profilePic} alt=''/>
             </div>
             <div className='username'>
               { this.props.username }
@@ -32,6 +32,7 @@ class Message extends React.Component {
 Message.defaultProps = {
   message: '',
   username: '',
+  profilePic: 'https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png',
   fromMe: false
 };
 

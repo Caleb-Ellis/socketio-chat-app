@@ -20,7 +20,7 @@ class UserList extends React.Component {
       <div id="userListPanel" className="show">
         <div id="topRightPanel">
           <div id="userProfile">
-            <img className="profile-pic whiteBorder" src='https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png' alt=""/><strong>{this.props.username}</strong>
+            <img className="profile-pic whiteBorder" src={this.props.profilePic} alt=""/><strong>{this.props.username}</strong>
           </div>
         </div>
         <div id="usersWindow">

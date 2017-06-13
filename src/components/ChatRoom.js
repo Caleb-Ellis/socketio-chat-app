@@ -98,18 +98,23 @@ class ChatRoom extends React.Component {
             <h2 id="roomTitle">Chatroom</h2>
           <i onClick={this.props.leaveHandler} id="leaveBtn" className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
         </div>
-        <ChatHistory messages={this.state.messages} />
+        <ChatHistory
+          messages={this.state.messages} />
         <div id="feedback"></div>
-        <ChatInput onSend={this.sendHandler} />
+        <ChatInput
+          onSend={this.sendHandler} />
         </div>
-        <UserList username={this.props.username} />
+        <UserList
+          username={this.props.username}
+          profilePic={this.props.profilePic} />
       </div>
     );
   }
 
 }
 ChatRoom.defaultProps = {
-  username: 'Anonymous'
+  username: 'Anonymous',
+  profilePic: 'https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png'
 };
 
 export default ChatRoom;
