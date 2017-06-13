@@ -24,7 +24,8 @@ input[type="text"] {
   display: block;
   width: 100%;
   background: #fff;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   font-size: 16px;
 }
 
@@ -39,7 +40,7 @@ input[type="submit"] {
   border: 0;
   padding: 12px 0;
   width: 100%;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 5px 5px;
   transition: all .2s;
 }
 
@@ -53,7 +54,7 @@ input[type="submit"]:hover {
   display: flex;
   justify-content: center;
   max-height: 90vh;
-  margin: 25vh auto;
+  margin: 20vh auto;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -102,17 +103,35 @@ input[type="submit"]:hover {
 #appName {
   justify-content: center;
 }
+
+#socialMediaButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 100%;
+  background: #f9f9f9;
+}
+
+#facebookBtn {
+  transition: all .2s;
+}
+
+#facebookBtn:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 700px) {
   #userListPanel {
     display: none;
   }
   .loginWrapper {
     max-height: 100vh;
-    margin: 33vh auto;
+    margin: 5vh auto;
   }
   .chatWrapper {
     max-height: 100vh;
-    margin: 0 auto;
+    margin: 5vh auto 0 auto;
     left: 0;
   }
   input[type="submit"] {

@@ -57,6 +57,9 @@ class App extends React.Component {
             <div id="appName" className="title">
               <h2>React Chat</h2>
             </div>
+            <div id="socialMediaButtons">
+              <img id="facebookBtn" src='https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/facebookLoginBtn.png' alt=''/>
+            </div>
             <div>
               <input id="inputText"
                 type="text"
