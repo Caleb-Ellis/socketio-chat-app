@@ -4,14 +4,14 @@ import React from 'react';
 class Message extends React.Component {
   render() {
     // Was the message sent by the current user. If so, add a css class
-    const fromMe = this.props.fromMe ? 'from-me' : 'from-other';
+    const fromMe = this.props.fromMe ? 'fromMe' : 'fromOther';
 
     return (
       <div>
         <div className={`message ${fromMe}`}>
-          <div className='user-info'>
+          <div className='userInfo'>
             <div>
-              <img className='profile-pic' src={this.props.profilePic} alt=''/>
+              <img className='profilePic' src={this.props.profilePic} alt=''/>
             </div>
             <div className='username'>
               { this.props.username }
@@ -20,7 +20,7 @@ class Message extends React.Component {
               { this.props.date }
             </div>
           </div>
-          <div className='message-body'>
+          <div className='messageBody'>
             { this.props.message }
           </div>
         </div>

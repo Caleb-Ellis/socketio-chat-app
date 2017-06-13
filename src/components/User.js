@@ -4,9 +4,9 @@ import React from 'react';
 class User extends React.Component {
   render() {
     return (
-      <div className='user-info'>
+      <div className='userInfo'>
         <div>
-          <img className='profile-pic' src={this.props.profilePic} alt=''/>
+          <img className='profilePic' src={this.props.profilePic} alt=''/>
         </div>
         <div className='username'>
           { this.props.username }
@@ -18,7 +18,7 @@ class User extends React.Component {
 
 User.defaultProps = {
   username: '',
-  profilePic: 'https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png',
+  profilePic: 'https://raw.githubusercontent.com/Caleb-Ellis/socketio-chat-app/react/src/img/user.png'
 };
 
-export default Message;
+export default User;

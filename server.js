@@ -19,22 +19,22 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/dist/index.html')
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/dist/index.html')
 });
 
 server.listen(PORT, function(error) {
   if (error) {
     console.error(error);
   } else {
-    console.log('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
+    console.log('Listening on port '+ PORT);
   }
 });
 
 // Setup socket.io
 io.on('connection', socket => {
 
-  // Log chat messages
+  // When client sends a message
   socket.on('client:message', data => {
     console.log(`${data.username}: ${data.message}`);
 
@@ -42,12 +42,12 @@ io.on('connection', socket => {
     socket.broadcast.emit('server:message', data);
   });
 
-  // Log when user enters room
+  // When user enters room
   socket.on('join', data => {
     socket.broadcast.emit('server:join', data);
   });
 
-  // Log when user exits room
+  // When user exits room
   socket.on('leave', data => {
     socket.broadcast.emit('server:leave', data);
   });

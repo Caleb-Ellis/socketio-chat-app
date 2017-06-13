@@ -14,6 +14,7 @@ class ChatRoom extends React.Component {
     super(props);
     this.state = {
       messages: [],
+      users: []
     };
 
     // Bind 'this' to event handlers - React ES6 does not do this by default
@@ -27,6 +28,7 @@ class ChatRoom extends React.Component {
       this.addMessage(message);
     });
 
+    // TODO: Implement a better feedback display
     // Listen for users typing
     socket.on('server:typing', data => {
       document.getElementById('feedback').innerHTML='<p><em>'+data+' is typing...</em></p>';
@@ -34,6 +36,7 @@ class ChatRoom extends React.Component {
 
     // Listen for users joining
     socket.on('server:join', data => {
+      // Send feedback message
       document.getElementById('feedback').innerHTML='<p><em>'+data+' has entered the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
     });
 
@@ -48,7 +51,9 @@ class ChatRoom extends React.Component {
   }
 
   sendHandler(message) {
+    // Add timestamp to message
     let date = new Date(Date.now()).toLocaleString();
+
     const messageObject = {
       username: this.props.username,
       message,
@@ -71,7 +76,7 @@ class ChatRoom extends React.Component {
 
   componentDidMount() {
     // Auto-focus on input text
-    document.getElementById("input-text").focus();
+    document.getElementById("inputText").focus();
 
     // Emit join message
     socket.emit('join', this.props.username);
@@ -94,8 +99,8 @@ class ChatRoom extends React.Component {
     return (
       <div className="chatWrapper left">
         <div className="mainWrapper">
-          <div className="title">
-            <h2 id="roomTitle">Chatroom</h2>
+          <div id="roomTitle" className="title">
+            <h2>Chatroom</h2>
           <i onClick={this.props.leaveHandler} id="leaveBtn" className="fa fa-sign-out fa-lg" aria-hidden="true"></i>
         </div>
         <ChatHistory

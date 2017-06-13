@@ -36,7 +36,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // Auto-focus on input text
-    document.getElementById("input-text").focus();
+    document.getElementById("inputText").focus();
   }
 
   render() {
@@ -54,11 +54,11 @@ class App extends React.Component {
       <form onSubmit={this.usernameSubmitHandler} className="centered">
         <div className="loginWrapper">
           <div className="mainWrapper">
-            <div className="title">
-              <h2>React + Socket Instant Chat</h2>
+            <div id="appName" className="title">
+              <h2>React Chat</h2>
             </div>
             <div>
-              <input id="input-text"
+              <input id="inputText"
                 type="text"
                 maxLength="30"
                 onChange={this.usernameChangeHandler}
