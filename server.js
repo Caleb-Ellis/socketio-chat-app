@@ -4,6 +4,18 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var mongoose = require('mongoose');
+var dotenv = require('dotenv');
+
+// Connect to database
+dotenv.config();
+var dbURI = process.env.MONGOLAB_URI || "mongodb://localhost:27017/react-chat";
+mongoose.connect(dbURI, {db: {safe: true}});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Connection error: '));
+db.once('open', function() {
+  console.log('Connected to: ' + dbURI);
+});
 
 // using webpack-dev-server and middleware in development environment
 if (process.env.NODE_ENV !== 'production') {
@@ -20,8 +32,11 @@ if (process.env.NODE_ENV !== 'production') {
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/dist/index.html')
+  res.sendFile(__dirname + '/dist/index.html');
 });
+
+// Get User model
+var User = require(__dirname + '/models/User.js');
 
 server.listen(PORT, function(error) {
   if (error) {
@@ -31,8 +46,10 @@ server.listen(PORT, function(error) {
   }
 });
 
+let users = [];
 // Setup socket.io
 io.on('connection', socket => {
+  console.log('Made connection to ' + socket.id);
 
   // When client sends a message
   socket.on('client:message', data => {
@@ -43,12 +60,23 @@ io.on('connection', socket => {
   });
 
   // When user enters room
-  socket.on('join', data => {
-    socket.broadcast.emit('server:join', data);
+  socket.on('join', user => {
+    users.push(user);
+    console.log(users);
+    io.emit('server:userlist', users);
+    socket.broadcast.emit('server:join', user);
   });
 
   // When user exits room
-  socket.on('leave', data => {
-    socket.broadcast.emit('server:leave', data);
+  socket.on('leave', user => {
+    let index = users.indexOf(user);
+    if (index !== -1) {
+      users.splice(index, 1);
+    }
+    console.log(users);
+    io.emit('server:userlist', users);
+    socket.broadcast.emit('server:leave', user);
   });
+
+
 });

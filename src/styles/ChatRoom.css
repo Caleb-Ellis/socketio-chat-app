@@ -183,23 +183,32 @@
   overflow-wrap: break-word;
 }
 
-#userProfile {
+.userProfile {
   display: flex;
   justify-content: flex-start;
-  width: 90%;
   align-items: center;
+  width: 90%;
   min-height: 70px;
   padding: 0 10px;
   overflow-wrap: break-word;
 }
 
-#userProfile strong {
+#myText {
   color: #fff;
+  max-width: 70%;
+}
+
+#userText {
+  color: #999;
   max-width: 70%;
 }
 
 .whiteBorder {
   border: 3px solid #f9f9f9;
+}
+
+.blueBorder {
+  border: 3px solid #7384c1;
 }
 
 #usersWindow {
@@ -208,7 +217,7 @@
   overflow: auto;
   background: #f9f9f9;
   overflow-wrap: break-word;
-  padding: 10px;
+  padding: 0px;
   border-bottom-right-radius: 5px;
 }
 
@@ -217,20 +226,26 @@
   list-style: none;
   display: flex;
   flex-direction: column;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
 }
 
-#windowSlider {
+.userPanel {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 20px;
-  color: #7384c1;
-  overflow: visible;
-  padding: 0;
-  margin: 0;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  min-height: 70px;
+  color: #999;
+  overflow-wrap: break-word;
 }
 
 #slider {
+  position: absolute;
+  right: 5px;
+  top: 45%;
+  color: #7384c1;
   opacity: 0.5;
   transition: all .2s;
   padding: 5px 10px;

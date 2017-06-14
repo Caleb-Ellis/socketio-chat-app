@@ -4,7 +4,6 @@ import ChatRoom from './ChatRoom';
 import '../styles/App.css';
 import '../styles/Login.css';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +30,6 @@ class App extends React.Component {
     // Prevent page refresh
     event.preventDefault();
     this.setState({ submitted: true, username: this.state.username });
-
   }
 
   componentDidMount() {

@@ -131,7 +131,7 @@ input[type="submit"]:hover {
   }
   .chatWrapper {
     max-height: 100vh;
-    margin: 5vh auto 0 auto;
+    margin: 0 auto;
     left: 0;
   }
   input[type="submit"] {

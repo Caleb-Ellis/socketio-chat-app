@@ -2,7 +2,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-//import User from './User';
+import User from './User';
 
 class UserList extends React.Component {
   constructor(props) {
@@ -26,20 +26,26 @@ class UserList extends React.Component {
 
   render() {
     // TODO: Loop through all users in the state and create a User component
-
+    const users = this.props.users.map((user, i) => {
+      return (
+        <User
+          key={i}
+          username={user} />
+      );
+    });
 
     return (
       <div id="userListPanel" className="show">
         <div id="topRightPanel">
-          <div id="userProfile">
-            <img className="profilePic whiteBorder" src={this.props.profilePic} alt=""/><strong>{this.props.username}</strong>
+          <div className="userProfile">
+            <img className="profilePic whiteBorder" src={this.props.profilePic} alt=""/><strong id="myText">{this.props.username}</strong>
           </div>
         </div>
         <div id="usersWindow">
-          <ul id="userList"></ul>
-          <div id="windowSlider">
-            <i onClick={this.slideHandler} id="slider" className="fa fa-angle-left fa-lg" aria-hidden="true"></i>
+          <div id="userList">
+            { users }
           </div>
+          <i onClick={this.slideHandler} id="slider" className="fa fa-angle-left fa-lg" aria-hidden="true"></i>
         </div>
       </div>
     );

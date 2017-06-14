@@ -35,14 +35,19 @@ class ChatRoom extends React.Component {
     });
 
     // Listen for users joining
-    socket.on('server:join', data => {
+    socket.on('server:join', user => {
       // Send feedback message
-      document.getElementById('feedback').innerHTML='<p><em>'+data+' has entered the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
+      document.getElementById('feedback').innerHTML='<p><em>'+user+' has entered the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
     });
 
     // Listen for users leaving
-    socket.on('server:leave', data => {
-      document.getElementById('feedback').innerHTML='<p><em>'+data+' has left the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
+    socket.on('server:leave', user => {
+      document.getElementById('feedback').innerHTML='<p><em>'+user+' has left the room ('+new Date(Date.now()).toLocaleString()+')</em></p>';
+    });
+
+    // Listen for userlist generation
+    socket.on('server:userlist', users => {
+      this.setState({users: users});
     });
   }
 
@@ -111,7 +116,8 @@ class ChatRoom extends React.Component {
         </div>
         <UserList
           username={this.props.username}
-          profilePic={this.props.profilePic} />
+          profilePic={this.props.profilePic}
+          users={this.state.users} />
       </div>
     );
   }

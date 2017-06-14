@@ -4,12 +4,9 @@ import React from 'react';
 class User extends React.Component {
   render() {
     return (
-      <div className='userInfo'>
-        <div>
-          <img className='profilePic' src={this.props.profilePic} alt=''/>
-        </div>
-        <div className='username'>
-          { this.props.username }
+      <div className="userPanel">
+        <div className="userProfile">
+          <img className="profilePic blueBorder" src={this.props.profilePic} alt=""/><strong id="userText">{this.props.username}</strong>
         </div>
       </div>
     );
