@@ -243,7 +243,7 @@
 
 #slider {
   position: absolute;
-  right: 5px;
+  right: 0;
   top: 45%;
   color: #7384c1;
   opacity: 0.5;
