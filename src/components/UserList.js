@@ -22,7 +22,7 @@ class UserList extends React.Component {
 
   componentDidMount() {
     // Animate user panel coming out on mount
-    $('#userListPanel').toggleClass('show hide');
+    setTimeout( () => $('#userListPanel').toggleClass('show hide'), 100);
   }
 
   componentDidUpdate() {
