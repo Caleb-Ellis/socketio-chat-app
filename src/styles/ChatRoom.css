@@ -269,6 +269,7 @@
   transform: translateX(5px);
 }
 
+
 .slide-enter {
   opacity: 0.01;
   position: relative;
@@ -286,7 +287,29 @@
   opacity: 1;
 }
 
-.slide-leave.example-leave-active {
+.slide-leave.slide-leave-active {
   opacity: 0.01;
   transition: opacity 200ms ease-in;
+}
+
+.userlist-slide-enter {
+  opacity: 0.01;
+  position: relative;
+  left: -10px;
+}
+
+.userlist-slide-enter.userlist-slide-enter-active {
+  opacity: 1;
+  position: relative;
+  left: 0;
+  transition: all 200ms ease-in;
+}
+
+.userlist-slide-leave {
+  opacity: 1;
+}
+
+.userlist-slide-leave.userlise-slide-leave-active {
+  opacity: 0.01;
+  transition: all 200ms ease-in;
 }

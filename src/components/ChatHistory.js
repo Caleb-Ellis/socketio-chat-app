@@ -1,6 +1,6 @@
 // Import dependencies
 import React from 'react';
-import { CSSTransitionGroup } from 'react-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import Message from './Message';
 

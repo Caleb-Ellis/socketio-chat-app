@@ -1,8 +1,10 @@
 // Import dependencies
 import React from 'react';
 import $ from 'jquery';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import User from './User';
+
 
 class UserList extends React.Component {
   constructor(props) {
@@ -16,6 +18,11 @@ class UserList extends React.Component {
     $('#userListPanel').toggleClass('show hide');
     $('#slider').toggleClass('fa-angle-left fa-angle-right');
     $('.chatWrapper').toggleClass('center left');
+  }
+
+  componentDidMount() {
+    // Animate user panel coming out on mount
+    $('#userListPanel').toggleClass('show hide');
   }
 
   componentDidUpdate() {
@@ -35,7 +42,7 @@ class UserList extends React.Component {
     });
 
     return (
-      <div id="userListPanel" className="show">
+      <div id="userListPanel" className="hide">
         <div id="topRightPanel">
           <div className="userProfile">
             <img className="profilePic whiteBorder" src={this.props.profilePic} alt=""/><strong id="myText">{this.props.username}</strong>
@@ -43,7 +50,12 @@ class UserList extends React.Component {
         </div>
         <div id="usersWindow">
           <div id="userList">
-            { users }
+            <CSSTransitionGroup
+              transitionName="userlist-slide"
+              transitionEnterTimeout={200}
+              transitionLeaveTimeout={200}>
+                { users }
+            </CSSTransitionGroup>
           </div>
           <i onClick={this.slideHandler} id="slider" className="fa fa-angle-left fa-lg" aria-hidden="true"></i>
         </div>
